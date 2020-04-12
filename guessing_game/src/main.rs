@@ -1,7 +1,6 @@
 extern crate rand;
 // 外部依存のクレート(枠)の読み込み。use rand が使用可能に
 // toml ファイルの dependencies で読み込み必要
-// extern C と同じ？ == 宣言のみでグローバルにアクセス
 
 use std::io;
 use std::cmp::Ordering; // 比較メソッド含む（cmp == compare？
