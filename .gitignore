@@ -2,3 +2,4 @@
 *.toml
 *exe
 *.pdb
+*/target
