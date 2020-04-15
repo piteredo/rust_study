@@ -25,6 +25,6 @@ fn update(_app: &App, _model: &mut Model, _update: Update) {
 fn view(app: &App, _model: &Model, frame: Frame) {
     let draw = app.draw();
     draw.background()
-        .color(PLUM);
+        .color(OLIVE);
     draw.to_frame(app, &frame).expect("err");
 }
