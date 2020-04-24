@@ -1,5 +1,6 @@
 use nannou::prelude::*;
-use rand::Rng;
+//use rand::Rng;
+use nannou::text;
 
 fn main() {
     nannou::app(model)
@@ -53,6 +54,12 @@ fn view(app: &App, model: &Model, frame: Frame) {
         .x_y(model.x, model.y)
         .radius(10.0)
         .color(RED);
+
+    //let font_data: &[u8] = include_bytes!("../arial.TTF");
+    // let owned_font_data: Vec<u8> = font_data.to_vec();
+    //let font: text::Font<'static> = text::Font::from_bytes(&font_data)?;
+    let text = "sssss";
+    draw.text(text);
 
     draw.to_frame(app, &frame).expect("err");
 }
