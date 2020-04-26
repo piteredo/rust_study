@@ -13,13 +13,15 @@ struct Model {
     y: f32,
 }
 
-fn model(app: &App) -> Model {
+fn model<'a>(app: &App) -> Model {
     let _window = app
         .new_window()
         .event(event)
         .view(view)
         .build()
         .expect("err");
+    //let font_data: &[u8] = include_bytes!("../Jazz____.ttf");
+    //let font: Font = Font::from_bytes(font_data).unwrap();
     Model {
         x: 0.0,
         y: 0.0,
@@ -55,10 +57,10 @@ fn view(app: &App, model: &Model, frame: Frame) {
         .radius(10.0)
         .color(RED);
 
-    let font_data: &[u8] = include_bytes!("../MAESTRO_.TTF");
-    // let owned_font_data: Vec<u8> = font_data.to_vec();
+
+    let font_data: &[u8] = include_bytes!("../arial.ttf");
     let font: Font = Font::from_bytes(font_data).unwrap();
-    let text = "*";
+    let text = ",;p./:@][";
     draw.text(text).font_size(60).font(font);
 
     draw.to_frame(app, &frame).expect("err");
