@@ -23,7 +23,7 @@ struct Model {
 fn model(app: &App) -> Model {
     let window_w = 800;
     let window_h = 600;
-    app.set_loop_mode(LoopMode::rate_fps(12.0)); // 効いてない？
+    //app.set_loop_mode(LoopMode::rate_fps(12.0)); // 効いてない？
     app.new_window()
         .size(window_w, window_h)
         .build()
@@ -47,8 +47,10 @@ fn model(app: &App) -> Model {
     Model { balls: balls }
 }
 
-fn update(_app: &App, _model: &mut Model, _update: Update) {
-
+fn update(_app: &App, model: &mut Model, _update: Update) {
+    //for i in &mut model.balls {
+        //i.x += 4.0;
+    //}
 }
 
 fn view(app: &App, model: &Model, frame: Frame) {
@@ -56,11 +58,17 @@ fn view(app: &App, model: &Model, frame: Frame) {
     draw.background()
         .color(SKYBLUE);
 
-    for i in &model.balls {
+    /*for i in &model.balls {
         draw.rect()
             .x_y(i.x, i.y)
             .w_h(i.radius, i.radius)
             .color(BLUE);
+    }*/
+
+    let mut i = 0;
+    while i<100 {
+        draw.rect();
+        i += 1;
     }
 
     draw.text(&app.fps().to_string())
