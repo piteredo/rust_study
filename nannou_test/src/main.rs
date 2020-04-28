@@ -1,4 +1,5 @@
 use nannou::prelude::*;
+use nannou::text::*;
 use rand::Rng; // gen_range() に必要
 
 fn main() {
@@ -65,14 +66,19 @@ fn view(app: &App, model: &Model, frame: Frame) {
             .color(BLUE);
     }*/
 
-    let mut i = 0;
+    let font_bytes: &[u8] = include_bytes!("../ONGAKUN.TTF");
+    let font: Font = Font::from_bytes(font_bytes).unwrap();
+
+    /*let mut i = 0;
     while i<100 {
         draw.rect();
         i += 1;
-    }
+    }*/
 
-    draw.text(&app.fps().to_string())
-        .font_size(30);
+    // &app.fps().to_string()
+    draw.text("abcdefghijklmn")
+        .font(font)
+        .font_size(100);
 
     draw.to_frame(app, &frame).unwrap();
 }
