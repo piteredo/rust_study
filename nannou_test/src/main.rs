@@ -69,11 +69,11 @@ fn view(app: &App, model: &Model, frame: Frame) {
     let font_bytes: &[u8] = include_bytes!("../ONGAKUN.TTF");
     let font: Font = Font::from_bytes(font_bytes).unwrap();
 
-    /*let mut i = 0;
+    let mut i = 0;
     while i<100 {
         draw.rect();
         i += 1;
-    }*/
+    }
 
     // &app.fps().to_string()
     draw.text("abcdefghijklmn")
