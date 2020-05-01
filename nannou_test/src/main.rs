@@ -49,9 +49,9 @@ fn model(app: &App) -> Model {
 }
 
 fn update(_app: &App, model: &mut Model, _update: Update) {
-    //for i in &mut model.balls {
-        //i.x += 4.0;
-    //}
+    for i in &mut model.balls {
+        i.x += 4.0;
+    }
 }
 
 fn view(app: &App, model: &Model, frame: Frame) {
@@ -75,10 +75,10 @@ fn view(app: &App, model: &Model, frame: Frame) {
         i += 1;
     }
 
-    // &app.fps().to_string()
-    /*draw.text("abcdefghijklmn")
-        .font(font)
-        .font_size(100);*/
+    //&app.fps().to_string()
+    draw.text(&app.fps().to_string())
+        //.font(font)
+        .font_size(100);
 
     draw.to_frame(app, &frame).unwrap();
 }
