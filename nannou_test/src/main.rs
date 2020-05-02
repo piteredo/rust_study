@@ -77,7 +77,7 @@ fn view(app: &App, model: &Model, frame: Frame) {
 
     //&app.fps().to_string()
     draw.text(&app.fps().to_string())
-        //.font(font)
+        .font(font)
         .font_size(100);
 
     draw.to_frame(app, &frame).unwrap();
