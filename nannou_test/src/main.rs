@@ -59,26 +59,29 @@ fn view(app: &App, model: &Model, frame: Frame) {
     draw.background()
         .color(SKYBLUE);
 
-    for i in &model.balls {
+    /*for i in &model.balls {
         draw.rect()
             .x_y(i.x, i.y)
             .w_h(i.radius, i.radius)
             .color(BLUE);
-    }
+    }*/
 
-    let font_bytes: &[u8] = include_bytes!("../ONGAKUN.TTF");
-    let font: Font = Font::from_bytes(font_bytes).unwrap();
+    //let font_bytes: &[u8] = include_bytes!("../ONGAKUN.TTF");
+    //let font: Font = Font::from_bytes(font_bytes).unwrap();
 
-    let mut i = 0;
+    /*let mut i = 0;
     while i<100 {
         draw.rect();
         i += 1;
-    }
+    }*/
 
     //&app.fps().to_string()
-    draw.text(&app.fps().to_string())
-        .font(font)
-        .font_size(100);
+    /*draw.text(&app.time.to_string())
+        //.font(font)
+        .font_size(100);*/
+
+    let str = "C Major";
+    draw.text(str);
 
     draw.to_frame(app, &frame).unwrap();
 }
