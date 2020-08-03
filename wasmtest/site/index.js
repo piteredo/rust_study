@@ -1,4 +1,4 @@
-const js = import("@piteredo/wasmtest");
+const js = import("../pkg/wasmtest");
 js.then(js => {
-  js.greet("WebAssembly");
+  //js.run();
 });
