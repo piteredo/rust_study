@@ -3,7 +3,7 @@
     "serve": "webpack-dev-server"
   },
   "dependencies": {
-    "@piteredo/wasmtest": "^0.1.2"
+    "@piteredo/wasmtest": "^0.1.3"
   },
   "devDependencies": {
     "webpack": "^4.25.1",
