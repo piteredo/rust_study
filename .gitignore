@@ -5,3 +5,4 @@
 */target
 *.TTF
 *.TTC
+site/node_modules/
