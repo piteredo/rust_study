@@ -212,10 +212,22 @@ fn bobobo<T>(v1: T, v2: T)
     where T: std::fmt::Debug + Eq + std::hash::Hash + Copy + std::fmt::Display
 {
 
+    let chara = 'c';
+
     let mut heavy_calculation_closure_ex = Cacher3::new(|arg| {
         println!("BOBOBO calc. slowly....");
         std::thread::sleep(std::time::Duration::from_secs(2));
-        'c'
+        chara
+        /*
+            クロージャは、関数ではもちろん無理だけど、クロージャを囲む環境内の変数を参照できる。
+            関数との決定的違い。
+
+            クロージャが
+                FnOnce　のとき、変数の所有権を奪う。２回は奪えないので１回のみ実行できるから Once。奪われた変数は以降外ではつかえない
+                FnMut　のとき、可変で借用
+                Fn　のとき、不変で借用
+            する。これは推論される
+        */
     });
 
     println!("result_1_a: {}", heavy_calculation_closure_ex.value(v1));
