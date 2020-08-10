@@ -46,12 +46,13 @@ fn main() {
     // 他の設定いろいろ
     // あとは lib.rs の run() を呼んで、全部やってもらう
     // lib.rs がエラーを返したときに処理する
-    let args2: Vec<String> = env::args().collect();
 
     // 構造体のコンストラクタにパース処理をしてもらう
     // Result 型で返ってくるのでエラーを考慮する。
     // unwrap_or_else => Ok なら config に代入、Errならクロージャ実行(err引数はErr戻り値)
-    let config = io::Config::new(&args2).unwrap_or_else(|err| {
+    //
+    // コマンドライン引数を直接送る（ことによって構造体生成のためのcloneを使わずすむ
+    let config = io::Config::new(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem: {}", err);
         std::process::exit(1); // 0 以外はエラー終了
     });

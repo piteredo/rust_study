@@ -5,8 +5,8 @@ pub struct Config {
     case_sensitive: bool, // 検索の大文字小文字どうするかの環境変数
 }
 impl Config {
-    pub fn new(args: &[String]) -> Result<Config, &'static str> {
-        // vecの参照仮引数 [] でいけるぽい
+    // イテレータをつかってコマンドライン引数を直接処理する。要 mut
+    pub fn new(mut args: std::env::Args) -> Result<Config, &'static str> {
 
         if args.len() < 3 {
             return Err("not enough arguments");
@@ -14,8 +14,19 @@ impl Config {
             // return 書かないとエラーになる。早期リターンだから？
         }
 
-        let query = args[1].clone(); // cloneしないと参照のままになって構造体に入れられない
-        let filename = args[2].clone();
+        args.next(); // １引数目は使わないのでまずnext
+
+        // ２引数目をクエリに
+        let query = match args.next() {
+            Some(arg) => arg,
+            None => return Err("didnt get"), // 引数なければエラーを早期リターン
+        };
+
+        // ３引数目をfilenameに
+        let filename = match args.next() {
+            Some(arg) => arg,
+            None => return Err("didnt get"),
+        };
 
         let case_sensitive = std::env::var("CASE_INSENSITIVE").is_err();
         /*
@@ -58,15 +69,20 @@ pub fn run(config: Config) -> Result<(), Box<Error>>{
 
 
 pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+    /*
     let mut result = Vec::new();
-
     for line in contents.lines() { // テキストの各行を検証
         if line.contains(query) { // 行のなかに検索したい文字列があるか
             result.push(line);
         }
     }
-
     result
+    */
+
+    // ↑ をイテレータをつかって書き換えられる。短い！
+    contents.lines()
+        .filter(|line| line.contains(query))
+        .collect()
 }
 
 pub fn search_case_insensitive<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
