@@ -36,6 +36,10 @@ fn view(app: &App, model: &Model, frame: Frame) {
     draw.background()
         .color(Rgb::new(model.0, model.1, model.2));
 
-    draw.text(&format!("{}", app.elapsed_frames()));
+    draw.ellipse()
+        .w_h(10.0, 10.0)
+        .x_y(0.0, 0.0);
+
+    // draw.text(&format!("{}", app.elapsed_frames()));
     draw.to_frame(app, &frame).unwrap();
 }
